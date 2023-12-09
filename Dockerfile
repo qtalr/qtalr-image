@@ -35,8 +35,7 @@ ENV RMARKDOWN_VERSION=2.22
 ENV TINYTEXT_VERSION=0.45
 
 RUN R -e "install.packages('pak', repos = 'https://cloud.r-project.org')"
-CMD R -e "pak::pkg_install(c('tidyverse@${TIDYVERSE_VERSION}', 'usethis@${USETHIS_VERSION}', 'rmarkdown@${RMARKDOWN_VERSION}', 'tinytex@${TINYTEXT_VERSION}'))"
-
+RUN R -e "pak::pkg_install(c('tidyverse@${TIDYVERSE_VERSION}', 'usethis@${USETHIS_VERSION}', 'rmarkdown@${RMARKDOWN_VERSION}', 'tinytex@${TINYTEXT_VERSION}'))"
 
 # Copy RStudio preferences
 COPY --chown=${DEFAULT_USER}:${DEFAULT_USER} rstudio-prefs.json /home/${DEFAULT_USER}/.config/rstudio/rstudio-prefs.json
